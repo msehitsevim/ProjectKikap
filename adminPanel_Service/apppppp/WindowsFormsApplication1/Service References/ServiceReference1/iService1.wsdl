@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="iService1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:56696/iService1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:56696/iService1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:56696/iService1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService1.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IiService1_kitapGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:kitapGetir" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kitapGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapDetay_InputMessage">
+    <wsdl:part name="parameters" element="tns:kitapDetay" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapDetay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kitapDetayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapGuncelle_InputMessage">
+    <wsdl:part name="parameters" element="tns:kitapGuncelle" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapGuncelle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kitapGuncelleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:kitapEkle" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kitapEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapSil_InputMessage">
+    <wsdl:part name="parameters" element="tns:kitapSil" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_kitapSil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kitapSilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_musteriGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:musteriGetir" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_musteriGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:musteriGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_musteriDetay_InputMessage">
+    <wsdl:part name="parameters" element="tns:musteriDetay" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_musteriDetay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:musteriDetayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_talepGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:talepGetir" />
+  </wsdl:message>
+  <wsdl:message name="IiService1_talepGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:talepGetirResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IiService1">
+    <wsdl:operation name="kitapGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/kitapGetir" message="tns:IiService1_kitapGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/kitapGetirResponse" message="tns:IiService1_kitapGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kitapDetay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/kitapDetay" message="tns:IiService1_kitapDetay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/kitapDetayResponse" message="tns:IiService1_kitapDetay_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kitapGuncelle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/kitapGuncelle" message="tns:IiService1_kitapGuncelle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/kitapGuncelleResponse" message="tns:IiService1_kitapGuncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kitapEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/kitapEkle" message="tns:IiService1_kitapEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/kitapEkleResponse" message="tns:IiService1_kitapEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kitapSil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/kitapSil" message="tns:IiService1_kitapSil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/kitapSilResponse" message="tns:IiService1_kitapSil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="musteriGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/musteriGetir" message="tns:IiService1_musteriGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/musteriGetirResponse" message="tns:IiService1_musteriGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="musteriDetay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/musteriDetay" message="tns:IiService1_musteriDetay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/musteriDetayResponse" message="tns:IiService1_musteriDetay_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="talepGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IiService1/talepGetir" message="tns:IiService1_talepGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IiService1/talepGetirResponse" message="tns:IiService1_talepGetir_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IiService1" type="tns:IiService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="kitapGetir">
+      <soap:operation soapAction="http://tempuri.org/IiService1/kitapGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kitapDetay">
+      <soap:operation soapAction="http://tempuri.org/IiService1/kitapDetay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kitapGuncelle">
+      <soap:operation soapAction="http://tempuri.org/IiService1/kitapGuncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kitapEkle">
+      <soap:operation soapAction="http://tempuri.org/IiService1/kitapEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kitapSil">
+      <soap:operation soapAction="http://tempuri.org/IiService1/kitapSil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="musteriGetir">
+      <soap:operation soapAction="http://tempuri.org/IiService1/musteriGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="musteriDetay">
+      <soap:operation soapAction="http://tempuri.org/IiService1/musteriDetay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="talepGetir">
+      <soap:operation soapAction="http://tempuri.org/IiService1/talepGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="iService1">
+    <wsdl:port name="BasicHttpBinding_IiService1" binding="tns:BasicHttpBinding_IiService1">
+      <soap:address location="http://localhost:56696/iService1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

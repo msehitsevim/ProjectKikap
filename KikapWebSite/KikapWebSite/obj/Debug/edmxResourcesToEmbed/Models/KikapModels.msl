@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KiKapModelStoreContainer" CdmEntityContainer="KiKapEntities">
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="KiKapModel.Book">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="bookName" ColumnName="bookName" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="editor" ColumnName="editor" />
+          <ScalarProperty Name="publicationDate" ColumnName="publicationDate" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="edition" ColumnName="edition" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="translator" ColumnName="translator" />
+          <ScalarProperty Name="pageNumbers" ColumnName="pageNumbers" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="format_" ColumnName="format_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="KiKapModel.Author">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="authorName" ColumnName="authorName" />
+          <ScalarProperty Name="bookPieces" ColumnName="bookPieces" />
+          <ScalarProperty Name="info" ColumnName="info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="KiKapModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="KiKapModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="claim" ColumnName="claim" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="giftPoint" ColumnName="giftPoint" />
+          <ScalarProperty Name="interested" ColumnName="interested" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="KiKapModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="customerMail" ColumnName="customerMail" />
+          <ScalarProperty Name="customerOrder" ColumnName="customerOrder" />
+          <ScalarProperty Name="orderNumbers" ColumnName="orderNumbers" />
+          <ScalarProperty Name="orderName" ColumnName="orderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="KiKapModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bookName" ColumnName="bookName" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="StockCount" ColumnName="StockCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="KiKapModel.Video">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="videoName" ColumnName="videoName" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

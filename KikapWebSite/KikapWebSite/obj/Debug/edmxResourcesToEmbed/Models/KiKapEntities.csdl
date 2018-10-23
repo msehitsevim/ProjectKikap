@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KiKapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KiKapEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="KiKapModel.Book" />
+    <EntitySet Name="Categories" EntityType="KiKapModel.Category" />
+    <EntitySet Name="Authors" EntityType="KiKapModel.Author" />
+    <EntitySet Name="Customers" EntityType="KiKapModel.Customer" />
+    <EntitySet Name="Orders" EntityType="KiKapModel.Order" />
+    <EntitySet Name="Stocks" EntityType="KiKapModel.Stock" />
+    <EntitySet Name="Videos" EntityType="KiKapModel.Video" />
+  </EntityContainer>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="editor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="publicationDate" Type="Int16" />
+    <Property Name="publisher" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="edition" Type="Byte" />
+    <Property Name="price" Type="Double" />
+    <Property Name="translator" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="pageNumbers" Type="Int16" />
+    <Property Name="language" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="format_" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ISBN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryName" />
+    </Key>
+    <Property Name="CategoryId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="authorName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="bookPieces" Type="Byte" />
+    <Property Name="info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="sirname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="mail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="interested" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="tcNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="customerOrder" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="orderNumbers" Type="Byte" />
+    <Property Name="orderName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="publisher" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StockCount" Type="Int16" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="videoName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

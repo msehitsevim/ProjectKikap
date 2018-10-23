@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KiKapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="editor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="publicationDate" Type="Int16" />
+    <Property Name="publisher" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="edition" Type="Byte" />
+    <Property Name="balance" Type="Double" />
+    <Property Name="translator" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="pageNumbers" Type="Int16" />
+    <Property Name="language" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="format_" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Stocks" Relationship="Self.fk_ISBN" FromRole="Books" ToRole="Stock" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="authorName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="bookPieces" Type="Byte" />
+    <Property Name="info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+      <PropertyRef Name="CategoryName" />
+    </Key>
+    <Property Name="CategoryId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="mail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="claim" Type="Byte" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="giftPoint" Type="Int16" />
+    <Property Name="interested" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="customerOrder" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="orderNumbers" Type="Byte" />
+    <Property Name="orderName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="publisher" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StockCount" Type="Int16" />
+    <NavigationProperty Name="Book" Relationship="Self.fk_ISBN" FromRole="Stock" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="videoName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_ISBN">
+    <End Role="Books" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KiKapEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="Authors" EntityType="Self.Author" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Stocks" EntityType="Self.Stock" />
+    <EntitySet Name="Videos" EntityType="Self.Video" />
+    <AssociationSet Name="fk_ISBN" Association="Self.fk_ISBN">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Stock" EntitySet="Stocks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

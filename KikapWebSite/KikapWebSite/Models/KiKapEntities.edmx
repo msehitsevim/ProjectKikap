@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KiKapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KiKap.dbo.Authors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="authorName" Type="varchar" MaxLength="30" />
+          <Property Name="bookPieces" Type="tinyint" />
+          <Property Name="info" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookName" Type="varchar" MaxLength="60" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="author" Type="varchar" MaxLength="30" />
+          <Property Name="editor" Type="varchar" MaxLength="50" />
+          <Property Name="publicationDate" Type="smallint" />
+          <Property Name="publisher" Type="varchar" MaxLength="40" />
+          <Property Name="edition" Type="tinyint" />
+          <Property Name="price" Type="float" />
+          <Property Name="translator" Type="varchar" MaxLength="40" />
+          <Property Name="pageNumbers" Type="smallint" />
+          <Property Name="language" Type="varchar" MaxLength="15" />
+          <Property Name="size" Type="varchar" MaxLength="10" />
+          <Property Name="format_" Type="varchar" MaxLength="11" />
+          <Property Name="ISBN" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryName" />
+          </Key>
+          <Property Name="CategoryId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KiKap.dbo.Customers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" />
+          <Property Name="sirname" Type="varchar" MaxLength="20" />
+          <Property Name="mail" Type="varchar" MaxLength="40" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="interested" Type="varchar" MaxLength="15" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="tcNo" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KiKap.dbo.Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerMail" Type="varchar" MaxLength="40" />
+          <Property Name="customerOrder" Type="varchar" MaxLength="60" />
+          <Property Name="orderNumbers" Type="tinyint" />
+          <Property Name="orderName" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KiKap.dbo.Stock' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookName" Type="varchar" MaxLength="60" />
+          <Property Name="author" Type="varchar" MaxLength="30" />
+          <Property Name="publisher" Type="varchar" MaxLength="40" />
+          <Property Name="ISBN" Type="varchar" MaxLength="50" />
+          <Property Name="StockCount" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KiKap.dbo.Videos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="videoName" Type="varchar" MaxLength="30" />
+          <Property Name="link" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'fk_AutName' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="fk_AutName" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'fk_EMail' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="fk_EMail" />-->
+        <EntityContainer Name="KiKapModelStoreContainer">
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authors" EntityType="Self.Authors" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Authors].[id] AS [id], 
+    [Authors].[authorName] AS [authorName], 
+    [Authors].[bookPieces] AS [bookPieces], 
+    [Authors].[info] AS [info]
+    FROM [dbo].[Authors] AS [Authors]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Customers" EntityType="Self.Customers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customers].[id] AS [id], 
+    [Customers].[name] AS [name], 
+    [Customers].[sirname] AS [sirname], 
+    [Customers].[mail] AS [mail], 
+    [Customers].[address] AS [address], 
+    [Customers].[interested] AS [interested], 
+    [Customers].[phone] AS [phone], 
+    [Customers].[tcNo] AS [tcNo]
+    FROM [dbo].[Customers] AS [Customers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Orders].[id] AS [id], 
+    [Orders].[customerMail] AS [customerMail], 
+    [Orders].[customerOrder] AS [customerOrder], 
+    [Orders].[orderNumbers] AS [orderNumbers], 
+    [Orders].[orderName] AS [orderName]
+    FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Stock" EntityType="Self.Stock" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Stock].[id] AS [id], 
+    [Stock].[bookName] AS [bookName], 
+    [Stock].[author] AS [author], 
+    [Stock].[publisher] AS [publisher], 
+    [Stock].[ISBN] AS [ISBN], 
+    [Stock].[StockCount] AS [StockCount]
+    FROM [dbo].[Stock] AS [Stock]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Videos" EntityType="Self.Videos" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Videos].[id] AS [id], 
+    [Videos].[videoName] AS [videoName], 
+    [Videos].[link] AS [link]
+    FROM [dbo].[Videos] AS [Videos]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KiKapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KiKapEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="KiKapModel.Book" />
+          <EntitySet Name="Categories" EntityType="KiKapModel.Category" />
+          <EntitySet Name="Authors" EntityType="KiKapModel.Author" />
+          <EntitySet Name="Customers" EntityType="KiKapModel.Customer" />
+          <EntitySet Name="Orders" EntityType="KiKapModel.Order" />
+          <EntitySet Name="Stocks" EntityType="KiKapModel.Stock" />
+          <EntitySet Name="Videos" EntityType="KiKapModel.Video" />
+        </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="editor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="publicationDate" Type="Int16" />
+          <Property Name="publisher" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="edition" Type="Byte" />
+          <Property Name="price" Type="Double" />
+          <Property Name="translator" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="pageNumbers" Type="Int16" />
+          <Property Name="language" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="format_" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryName" />
+          </Key>
+          <Property Name="CategoryId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="authorName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="bookPieces" Type="Byte" />
+          <Property Name="info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sirname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="interested" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="tcNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="customerOrder" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="orderNumbers" Type="Byte" />
+          <Property Name="orderName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="publisher" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StockCount" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="videoName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KiKapModelStoreContainer" CdmEntityContainer="KiKapEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="KiKapModel.Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="format_" ColumnName="format_" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="pageNumbers" ColumnName="pageNumbers" />
+                <ScalarProperty Name="translator" ColumnName="translator" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="edition" ColumnName="edition" />
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="publicationDate" ColumnName="publicationDate" />
+                <ScalarProperty Name="editor" ColumnName="editor" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="KiKapModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="KiKapModel.Author">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="bookPieces" ColumnName="bookPieces" />
+                <ScalarProperty Name="authorName" ColumnName="authorName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="KiKapModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="tcNo" ColumnName="tcNo" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="interested" ColumnName="interested" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="sirname" ColumnName="sirname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="KiKapModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="orderName" ColumnName="orderName" />
+                <ScalarProperty Name="orderNumbers" ColumnName="orderNumbers" />
+                <ScalarProperty Name="customerOrder" ColumnName="customerOrder" />
+                <ScalarProperty Name="customerMail" ColumnName="customerMail" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="KiKapModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="StockCount" ColumnName="StockCount" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="KiKapModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="videoName" ColumnName="videoName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
